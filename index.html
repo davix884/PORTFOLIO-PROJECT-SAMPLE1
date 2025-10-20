@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Wanjala | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">DAVIX <span>BRAND</span></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="login-btn">
+      <button id="openLogin">Login</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="home-image">
+      <img src="portfolio.jpg" alt="David Wanjala Portrait" width="230">
+    </div>
+    <div class="home-info">
+      <h1 class="glitch-text" data-text="David Wanjala">David Wanjala</h1>
+      <h2>I am a <span class="highlight"><span class="text-slider">
+  <span>Software Engineer</span>
+  <span>Full-Stack Developer</span>
+  <span>Music Director</span>
+</span></span></h2>
+      <p>I build high-performance digital experiences and create musical harmony — from elegant web applications to live piano arrangements that move audiences.</p>
+      <a href="#portfolio" class="btn">Explore My Work</a>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="skills reveal">
+    <h2>Key Skills & Expertise</h2>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <h3>Software Engineering</h3>
+        <p>Designing and implementing scalable software systems with robust architecture, performance, and reliability.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Full-Stack Development</h3>
+        <p>Building interactive web applications using HTML, CSS, JavaScript, React, Node.js, and databases like MySQL and MongoDB.</p>
+      </div>
+      <div class="skill-card">
+        <h3>UI/UX Design</h3>
+        <p>Transforming creative ideas into intuitive interfaces with focus on user experience, accessibility, and visual appeal.</p>
+      </div>
+      <div class="skill-card">
+        <h3>Music Direction</h3>
+        <p>Directing choirs, leading live music performances, and arranging complex compositions with professional piano expertise.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="about reveal">
+    <h2>About Me</h2>
+    <p>
+      My journey combines the precision of technology and the emotion of music.  
+      I’m a passionate Software Engineer and Full-Stack Developer who thrives on turning innovative ideas into functional, elegant systems.  
+      Beyond coding, I’m a seasoned Music Director and Pianist — blending creativity, discipline, and leadership both on stage and behind the screen.  
+      My professional goal is to engineer impactful digital solutions and inspire others through the harmony of art and technology.
+    </p>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials reveal">
+    <h2>Client Testimonials</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <img src="images/client1.jpg" alt="Client 1">
+        <p>“David transformed our outdated website into a sleek, responsive platform that boosted our online engagement significantly.”</p>
+        <h4>— Sarah M., Business Owner</h4>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/client2.jpg" alt="Client 2">
+        <p>“As a music director, David brings unmatched energy and creativity. His live arrangements uplift every performance.”</p>
+        <h4>— Mark T., Event Organizer</h4>
+      </div>
+      <div class="testimonial-card">
+        <img src="images/client3.jpg" alt="Client 3">
+        <p>“Working with David was seamless. His professionalism and technical skill exceeded all expectations.”</p>
+        <h4>— Brenda K., Freelance Client</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="call-to-action reveal">
+    <h2>Let’s Build Something Amazing Together</h2>
+    <p>Have a project, performance, or idea you’d love to bring to life? Let’s collaborate and make it happen.</p>
+    <a href="#contact">Contact Me</a>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact reveal">
+    <h2>Contact Me</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">David <span>Wanjala</span></div>
+    <p>Crafting code, creating music, and connecting creativity with technology.</p>
+    <p class="copyright">© 2025 David Wanjala. All Rights Reserved.</p>
+  </footer>
+
+  <!-- ===== LOGIN & SIGNUP MODALS ===== -->
+ <div id="modalBackdrop" class="modal-backdrop">
+
+    <div id="loginModal" class="custom-modal login-modal">
+        <button class="modal-close-btn" onclick="closeAllModals()">&times;</button>
+        <h2>Log In</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" id="loginEmail" placeholder="Email Address" required>
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+            </div>
+            <button type="submit" class="modal-btn main-btn">Sign In</button>
+        </form>
+
+        <a href="#" id="showForgot" class="modal-link">Forgot Password?</a>
+        <p class="modal-footer-text">Don't have an account? <a href="#" id="showSignup" class="modal-link">Create Account Now</a></p>
+    </div>
+
+    <div id="forgotPasswordModal" class="custom-modal forgot-modal">
+        <button class="modal-close-btn" onclick="closeAllModals()">&times;</button>
+        <h2>Recover Password</h2>
+        <form id="forgotForm">
+            <div class="input-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Enter your Email" required>
+            </div>
+            <button type="submit" class="modal-btn main-btn">Recover</button>
+        </form>
+        <p class="modal-footer-text"><a href="#" id="showLoginFromForgot" class="modal-link">Back to Login</a></p>
+    </div>
+
+    <div id="signupModal" class="custom-modal signup-modal">
+        <button class="modal-close-btn" onclick="closeAllModals()">&times;</button>
+        <h2>Create Account</h2>
+        <form id="signupForm">
+            <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="First Name" required>
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" placeholder="Last Name" required>
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" placeholder="Email Address" required>
+            </div>
+            <div class="input-group phone-group">
+                <select class="country-code">
+                    <option value="+254">+254 (KE)</option>
+                    <option value="+1">+1 (US)</option>
+                    <option value="+44">+44 (UK)</option>
+                </select>
+                <input type="tel" placeholder="Phone Number" required>
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="signupPassword" placeholder="Password" required>
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            </div>
+
+            <button type="submit" id="signupBtn" class="modal-btn main-btn">Register</button>
+        </form>
+        <p class="modal-footer-text">Already have an account? <a href="#" id="showLoginFromSignup" class="modal-link">Log In</a></p>
+    </div>
+</div>
+  <!-- ===== SCRIPTS ===== -->
+<script src="script.js"></script>
+  
+</body>
+</html>

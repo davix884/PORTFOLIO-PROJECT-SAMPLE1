@@ -1,0 +1,696 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0d0d0d;
+  color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+/* ===== ANIMATED BACKGROUND ===== */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(-45deg, #0d0d0d, #111111, #1e1e1e, #151515);
+  background-size: 400% 400%;
+  animation: gradientMove 18s ease infinite;
+  z-index: -2;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle floating particles */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100px 100px, 150px 150px;
+  animation: particleFloat 60s linear infinite;
+  z-index: -1;
+}
+
+@keyframes particleFloat {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 80px;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.logo span {
+  color: #00bcd4;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  justify-content: center;
+  flex: 1;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #00bcd4;
+}
+
+.login-btn button {
+  background: #00bcd4;
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.login-btn button:hover {
+  background: #0097a7;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  padding: 120px 10% 60px;
+  text-align: center;
+  position: relative;
+}
+
+.hero img {
+  border-radius: 50%;
+  border: 4px solid #00bcd4;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+
+
+.highlight {
+  display: inline-block;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.highlight span {
+  display: block;
+  color: #7cf03d;
+  animation: ease-in 20s steps(4) infinite;  /*i mean that the entire animation display duration is taking 8s */
+  line-height: 40px;
+  position: relative;
+}
+
+/* Animation */
+@keyframes textSlide {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-40px); }
+  50% { transform: translateY(-80px); }
+  75% { transform: translateY(-120px); }
+  100% { transform: translateY(0); }
+}
+
+/* Apply this class to the h1 */
+.glitch-text {
+    position: relative; /* Essential for layering shadows */
+    color: #fff; /* Base text color (white) */
+    text-transform: uppercase;
+    font-size: 3rem;
+    color: #00bcd4; /* Your current H1 color */
+    letter-spacing: 3px;
+    
+    /* The core glitch effect */
+    text-shadow: 
+        1px 0 0 #ff4081, /* Offset 1: Pink/Red */
+        -1px 0 0 #7cf03d; /* Offset 2: Neon Green */
+}
+
+/* Optional: Add a subtle animation for movement */
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text); /* Pulls text from a data attribute */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    color: #00bcd4; /* Base color for layers */
+}
+
+.glitch-text::before {
+    left: 2px; /* Slightly offset */
+    text-shadow: -1px 0 #ff4081;
+    /* Create a short, jarring animation */
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px; /* Slightly offset in the other direction */
+    text-shadow: 1px 0 #7cf03d;
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(10% 0 90% 0); }
+    10% { clip-path: inset(50% 0 50% 0); }
+    100% { clip-path: inset(20% 0 80% 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip-path: inset(20% 0 80% 0); }
+    5% { clip-path: inset(80% 0 20% 0); }
+    100% { clip-path: inset(10% 0 90% 0); }
+}
+/* ===== HERO SECTION TEXT ANIMATION FIX ===== */
+
+.hero h2 {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.highlight {
+  /* This container acts as the visible window */
+  display: inline-block;
+  height: 40px; /* Must match the line-height of the inner spans */
+  overflow: hidden; /* CRITICAL: Hides the text that is not currently displayed */
+  position: relative;
+  vertical-align: top; /* Align with text */
+  color: #ff4081; /* Default highlight color */
+  font-weight: 600;
+}
+
+.text-slider {
+  display: block;
+  /* Apply the animation to the element containing all the words */
+  animation: textSlide 12s steps(3) infinite; /* 3 steps for 3 words (1 word/sec + 3 sec pause) */
+  line-height: 40px; /* Controls the vertical distance of the slide */
+  position: relative;
+}
+
+.text-slider span {
+  /* Styles for each individual word/phrase */
+  display: block;
+  color: #00d435; /* Use the primary accent color */
+}
+
+
+/* Animation Keyframes */
+@keyframes textSlide {
+  /* 4s total cycle time: 
+    - 1s for "Software Engineer"
+    - 1s for "Full-Stack Developer"
+    - 1s for "Music Director"
+    - 1s pause before cycling (3 words * 40px = 120px slide total)
+  */
+  0% { transform: translateY(0); } /* Shows "Software Engineer" */
+  25% { transform: translateY(0); } /* Holds "Software Engineer" */
+  
+  33.3% { transform: translateY(-40px); } /* Slides up to "Full-Stack Developer" (1 * 40px) */
+  58.3% { transform: translateY(-40px); } /* Holds "Full-Stack Developer" */
+  
+  66.6% { transform: translateY(-80px); } /* Slides up to "Music Director" (2 * 40px) */
+  91.6% { transform: translateY(-80px); } /* Holds "Music Director" */
+  
+  100% { transform: translateY(0); } /* Instantly resets to "Software Engineer" for loop */
+}
+
+.hero p {
+  margin-top: 20px;
+  max-width: 600px;
+  color: #ccc;
+  line-height: 1.7;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 30px;
+  background: #00bcd4;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #0097a7;
+  transform: scale(1.05);
+}
+
+/* ===== SECTIONS ===== */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== SKILLS ===== */
+.skills {
+  background: rgba(24, 24, 24, 0.8);
+  padding: 100px 10%;
+  text-align: center;
+}
+
+.skills h2 {
+  color: #00bcd4;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+.skill-card {
+  background: rgba(34, 34, 34, 0.9);
+  padding: 25px;
+  border-radius: 15px;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  background: #2c2c2c;
+}
+
+.skill-card h3 {
+  color: #ff4081;
+  margin-bottom: 10px;
+}
+
+.skill-card p {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+/* ===== ABOUT ===== */
+.about {
+  padding: 100px 15%;
+  text-align: center;
+}
+
+.about h2 {
+  color: #00bcd4;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.about p {
+  color: #ccc;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 auto;
+  animation: fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+  background: rgba(15, 15, 15, 0.9);
+  padding: 100px 10%;
+  text-align: center;
+}
+
+.testimonials h2 {
+  color: #00bcd4;
+  font-size: 2.3rem;
+  margin-bottom: 40px;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.testimonial-card {
+  background: #1a1a1a;
+  border-radius: 15px;
+  padding: 30px;
+  color: #ccc;
+  transition: 0.3s;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.testimonial-card:hover {
+  transform: scale(1.03);
+  background: #222;
+}
+
+.testimonial-card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid #00bcd4;
+  margin-bottom: 15px;
+}
+
+/* ===== CALL TO ACTION ===== */
+.call-to-action {
+  background: linear-gradient(135deg, #00bcd4, #0097a7);
+  color: #fff;
+  text-align: center;
+  padding: 100px 10%;
+}
+
+.call-to-action h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.call-to-action p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.call-to-action a {
+  background: #fff;
+  color: #00bcd4;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.call-to-action a:hover {
+  background: #e0f7fa;
+}
+
+/* ===== CONTACT ===== */
+.contact {
+  text-align: center;
+  padding: 100px 10%;
+}
+
+.contact h2 {
+  color: #00bcd4;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #222;
+  color: #fff;
+}
+
+.contact-form button {
+  background: #00bcd4;
+  border: none;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #0097a7;
+}
+
+
+/* ===== EXIT BUTTON ===== */
+.exit-btn {
+  margin-top: 15px;
+  background: #ff4081;
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.exit-btn:hover {
+  background: #e91e63;
+  transform: scale(1.05);
+}
+
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #0a0a0a;
+  padding: 50px 10%;
+  text-align: center;
+  color: #aaa;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.footer-logo span {
+  color: #00bcd4;
+}
+
+/* ===== LOGIN / SIGNUP MODALS ===== */
+/* ===== LOGIN / SIGNUP MODALS (NEW STYLES) ===== */
+.modal-backdrop {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1050; /* Above all other content */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+    backdrop-filter: blur(5px);
+}
+
+.custom-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1e1e1e; /* Slightly lighter than body for contrast */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    width: 90%;
+    max-width: 380px;
+    color: #f5f5f5;
+    /* Start hidden for JS control */
+    display: none;
+    animation: fadeInModal 0.4s ease-out;
+    border: 1px solid #00bcd4; /* Subtle border */
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.custom-modal h2 {
+    color: #00bcd4;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Input Group Styling */
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #2c2c2c;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.input-group i {
+    color: #ff4081; /* Icon color */
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.input-group input,
+.input-group select {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    color: #fff;
+    padding: 0;
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+/* Specific Phone Group */
+.phone-group {
+    padding: 0;
+}
+
+.phone-group .country-code {
+    width: 120px;
+    background: #2c2c2c;
+    border-radius: 8px 0 0 8px;
+    padding: 10px;
+    border-right: 1px solid #444;
+}
+
+.phone-group input {
+    padding: 10px;
+    margin: 0;
+}
+
+/* Buttons */
+.modal-btn {
+    width: 100%;
+    padding: 12px;
+    background: #00bcd4;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.modal-btn:hover {
+    background: #0097a7;
+    transform: scale(1.02);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #ff4081;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.modal-close-btn:hover {
+    transform: rotate(90deg);
+}
+
+/* Links and Footer Text */
+.modal-link {
+    display: block;
+    text-align: center;
+    color: #00bcd4;
+    text-decoration: none;
+    font-size: 0.95rem;
+    margin-top: 10px;
+    transition: color 0.3s;
+}
+
+.modal-link:hover {
+    color: #ff4081;
+}
+
+.modal-footer-text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.modal-footer-text a {
+    font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 30px;
+    flex-direction: column;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero img {
+    width: 160px;
+  }
+}
